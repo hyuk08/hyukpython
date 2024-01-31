@@ -305,6 +305,8 @@ for student in range(1, 11):
         continue
     print("{0}번 학생, 58p 읽어보세요.".format(student)) 
 
-입력이 됐나?
+#입력이 됐나?
 
-됐다 됐어.
+#됐다 됐어.
+
+#이거 안 되면 문제 있는거다 한 번에 되자..
