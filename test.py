@@ -288,9 +288,19 @@
 # else:
 #     print("잘못된 입력입니다.")
 
-customer = "한승혁" # 한승혁이 올 때 까지 커피가 준비되었다는 걸 알려주고, 앞에 온 사람한테 이름을 묻는 걸 만들어보자.
-person = "Unknown"
+# 한승혁이 올 때 까지 커피가 준비되었다는 걸 알려주고, 앞에 온 사람한테 이름을 묻는 걸 만들어보자.
+# customer = "한승혁"
+# person = "Unknown"
 
-while person != customer: # person 이 customer 가 맞으면 false 고 틀리면 ture임.
-    print("{0}님, 커피가 준비되었습니다.".format(customer))
-    person = input("이름이 어떻게 되세요? ")
+# while person != customer: # person이 customer가 아닐 때, 계속 반복.
+#     print("{0}님, 커피가 준비되었습니다.".format(customer))
+#     person = input("이름이 어떻게 되세요? ")
+
+
+
+## continue 와 break
+absent = [2, 5] # 결석
+for student in range(1, 11):
+    if student in absent: # 만약 absent 값이 student 에 있다면, 다음 print 구문으로 넘어가지 않고, 윗 구문을 반복함.
+        continue
+    print("{0}번 학생, 58p 읽어보세요.".format(student))
