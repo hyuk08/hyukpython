@@ -1,3 +1,15 @@
+# 파이썬 할당연산자
+# = 왼쪽 변수에 오른쪽 값을 할당한다. ex) a = b 는 a = b 를 의미함. 
+# += 왼쪽 변수에 오른쪽 값을 더하고 그 결과를 왼쪽 변수에 할당한다. ex) a += b 는 a = a+b 를 의미함.
+# -= 왼쪽 변수에 오른쪽 값을 빼고 그 결과를 왼쪽 변수에 할당한다. ex) a -= b 는 a = a-b 를 의미함.
+# *= 왼쪽 변수에 오른쪽 값을 곱하고 그 결과를 왼쪽 변수에 할당한다. ex) a *= b 는 a = a*b 를 의미함.
+# /= 왼쪽 변수에 오른쪽 값을 나누고 그 결과를 왼쪽 변수에 할당한다. ex) a /= b 는 a = a/b 를 의미함.
+# %/ 왼쪽 변수에 오른쪽 값을 나눈 후 그 '나머지'를 왼쪽 변수에 할당한다. ex) a %/ b 는 a = a%b 를 의미함.
+# //= 왼쪽 변수에 오른쪽 값을 나눈 후 그 몫을 왼쪽 변수에 할당한다. ex) a //= b 는 a = a//b를 의미함.
+# **= 왼쪽 변수에 오른쪽 값을 제곱하고 그 결과를 왼쪽 변수에 할당한다. ex) a **= b 는 a = a**b 를 의미함.
+
+
+
 # animal = "강아지"
 # name = "구름"
 # hobby = "산책"
@@ -205,6 +217,8 @@
 # print("커피 당첨자 {0}".format(winners[1:]))
 # print(" -- 축하합니다 --")
 
+
+
 ## if     # if elif else.
 
 # weater = "비"
@@ -225,11 +239,58 @@
 # else:
 #     print("준비할 거 없는 가벼운 아침이네요. 조심히 다녀오세요.")
 
+# temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
+# if temp <= 0:
+#     print("물이 어는 수준입니다. 미끄럼 주의하세요.")
+# elif temp >= 0 and temp <= 10:
+#     print("많이 춥습니다. 외투를 챙기세요.")
+# elif temp >= 10 and temp <= 20:
+#     print("낮엔 덥지만 아침과 저녁이 쌀쌀해요. 겉옷을 챙기세요.")
+# elif temp >= 20 and temp <= 30:
+#     print("많이 덥습니다. 썬크림을 바르시고, 야외활동은 자제하세요.")
+# elif temp >= 30 and temp <= 40:
+#     print("밖이 끓는 수준입니다. 되도록이면 실내에 계십시오.")
+# elif temp >= 40 and temp <= 100:
+#     print("살이 익는 수준의 온도입니다. 절대 나가지 마세요. 무언가 잘못됐습니다. 경고!경고!경고!")
+# else:
+#     print("잘못된 입력입니다.")
+# elif 0 <= temp <= 10: 같이 end 없이도 사용 가능.
+    
 
 
-temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
-if 0 >= temp:
-    print("물이 어는 수준입니다. 미끄럼 주의하세요.")
-elif temp >= 30:
-    print("지구가 끓는 수준입니다. 썬크림을 바르시고, 야외활동 자제하세요.")
 
+## for # 반복문.
+# starbucks = ["한승혁", "강지호", "전지호", "최용빈"]
+# for customer in starbucks:
+#     print("{0}, 커피가 준비되었습니다.".format(customer))
+
+
+# while 
+# customer = "한승혁"
+# index = 5
+# while index >= 0: # index가 0보다 크거나 같을 때 까지 밑에 구문을 반복.
+#     print("{0}님, 커피가 준비되었습니다. {1}번 남았습니다.".format(customer, index))
+#     index -= 1 # index = index - 1
+#     if index == -1:
+#         print("{0}님 커피가 폐기처분되었습니다.".format(customer))
+
+# while life >= 0:
+#     print("체력이 {0}칸 남았습니다.".format(life))
+# life = 5
+# attack = input("공격하시겠습니까? (y or n 을 입력하세요.) ")
+# if attack == "y":
+#     print("공격에 성공하셨습니다. 적 남은 체력 {0}".format(life))
+#     life -= 1
+# elif attack == "n":
+#     print("공격하지 않습니다. 다음 턴.")
+# elif life == 0:
+#     print("적이 죽었습니다. you win!")
+# else:
+#     print("잘못된 입력입니다.")
+
+customer = "한승혁" # 한승혁이 올 때 까지 커피가 준비되었다는 걸 알려주고, 앞에 온 사람한테 이름을 묻는 걸 만들어보자.
+person = "Unknown"
+
+while person != customer: # person 이 customer 가 맞으면 false 고 틀리면 ture임.
+    print("{0}님, 커피가 준비되었습니다.".format(customer))
+    person = input("이름이 어떻게 되세요? ")
