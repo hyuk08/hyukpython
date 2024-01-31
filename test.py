@@ -303,4 +303,4 @@ absent = [2, 5] # 결석
 for student in range(1, 11):
     if student in absent: # 만약 absent 값이 student 에 있다면, 다음 print 구문으로 넘어가지 않고, 윗 구문을 반복함.
         continue
-    print("{0}번 학생, 58p 읽어보세요.".format(student))
+    print("{0}번 학생, 58p 읽어보세요.".format(student)) 
