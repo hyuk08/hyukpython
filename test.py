@@ -299,14 +299,42 @@
 
 
 ## continue 와 break
-absent = [2, 5] # 결석
-for student in range(1, 11):
-    if student in absent: # 만약 absent 값이 student 에 있다면, 다음 print 구문으로 넘어가지 않고, 윗 구문을 반복함.
-        continue
-    print("{0}번 학생, 58p 읽어보세요.".format(student)) 
+# absent = [2, 5] # 결석
+# no_book = [7] # 책을 깜빡함
+# for student in range(1, 11):
+#     if student in absent: # 만약 absent 값이 student 에 있다면, 
+#         continue # 다음 print 구문으로 넘어가지 않고, 윗 구문을 반복함.
+#     elif student in no_book:
+#         print("오늘 수업 여기까지. {0}번, 교무실로 따라와.".format(student))
+#         break # break를 만나면 바로 반복문 탈출.
+#     print("{0}번 학생, 58p 읽어보세요.".format(student))
 
-#입력이 됐나?
 
-#됐다 됐어.
 
-#이거 안 되면 문제 있는거다 한 번에 되자..
+## 한 줄 for문
+
+# 출석번호 1, 2, 3, 4 앞에 100씩 더하기로함. -> 101, 102, 103, 104
+# students = [1, 2, 3, 4, 5]
+# print(students)
+# students = [i+100 for i in students]
+# print(students)
+
+# quiz
+# 당신은 Cocoa 서비스를 이용하는 택시 기사입니다.
+# 50명의 승객과 매칭 기회가 있을 때, 총 탑승 승객수를 구하는 프로그램을 작성하시오.
+
+# 조건 1 : 승객별 운행 소요 시간은 5분 ~ 50분 사이의 난수로 정해짐.
+# 조건 2 : 소요 시간 5분 ~ 15분 사이의 승객만 매칭해야 함.
+
+# (출력문 예제)
+# [o] 1번째 손님 (소요시간 : 15분)
+# [o] 2번째 손님 (소요시간 : 50분)
+# [o] 3번째 손님 (소요시간 : 5분)
+# ...
+# [o] 50번째 손님 (소요시간 : 16분)
+
+# 총 탑승 승객 : 2명
+
+from random import * 
+
+customer = 50
