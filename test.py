@@ -335,6 +335,132 @@
 
 # 총 탑승 승객 : 2명
 
-from random import * 
 
-customer = 50
+
+## 함수 
+
+# def open_account():
+#     print("새로운 계좌가 생성되었습니다.")
+
+# def deposit(balance, money): # 입금
+#     print("입금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance + money))
+#     return balance + money
+
+# def withdraw(balance, money): # 출금
+#     if balance >= money: # 출금액이 잔액보다 적으면, 출금 가능.
+#         print("출금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance - money))
+#         return balance - money
+#     else:
+#         print("출금에 실패하였습니다. 잔액은 {0}원 입니다.".format(balance))
+#         return balance
+
+# def withdraw_night(balance, money): # 저녁에 출금
+#     commission = 100 # 수수료
+#     return commission, balance - money - commission
+
+
+
+# balance = 0
+# balance = deposit(balance, 1000)
+# # balance = withdraw(balance, 500)
+# commission, balance = withdraw_night(balance, 500)
+# print("출금이 완료되었습니다. 수수료는 {0}원이며, 잔액은 {1}원 입니다.".format(commission, balance))
+
+
+
+# 함수 기본값
+# def profile(name, age, main_lang):
+#     print("이름 : {0}\t 나이 : {1}\t 주 사용 언어 : {2}"\
+#           .format(name, age, main_lang)) # 역슬래쉬 후 엔터는 밑 문장까지 하나로 처리하겠다는 뜻.
+# profile("한승혁", 23, "python")
+# profile("강지호", 23, "Js")
+# profile("전지호", 23, "Java")
+
+# 중복되는 값을 반복하여 작성할 필요 없이 기본값으로 만들어 줄 수 있음. 
+# def profile(name, age=23, main_lang="python"): # 변수 뒤 '=' 과 값을 붙혀줌으로써 기본값 생성.
+#     print("이름 : {0}\t 나이 : {1}\t 주 사용 언어 : {2}".format(name, age, main_lang))
+# profile("한승혁")
+# profile("전지호")
+# profile("강지호")
+
+
+# 키워드 값 # 처음 순서를 지정해두면, 어떤 순서로 프로필을 작성하던지간에, 처음 순서대로 출력됨.
+# def profile(name, age, main_lang):
+#     print(name, age, main_lang)
+
+# profile(name="한승혁", main_lang="python", age=23)
+# profile(main_lang="Js", name="강지호", age=23)  
+
+# 가변인자 # 서로 다른 갯수의 값을 넣어줄 때 사용.
+# def profile(name, age, *language):
+#     print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
+#     for lang in language:
+#         print(lang, end=" ")
+#     print()
+
+# profile("강지호", 23, "python", "Java", "Javascript", "C++", "C#")
+# profile("한승혁", 23, "python")
+
+
+# 지역변수와 전역변수 # 스크래치에서 사용했던 이 스프라이트에서만 사용 체크박스와 같은 개념.
+# gun = 10
+# def checkpoint(soldiers): # 경계근무
+#     global gun # 전역 공간에 있는 gun 변수 사용.
+#     gun = gun - soldiers
+#     print("[함수 내] 남은 총 : {0}".format(gun))
+
+# print("전체 총 : {0}".format(gun)) # 전체 총 갯수
+# checkpoint(2) # 2명이 경계근무 나감.
+# print("남은 총 : {0}".format(gun)) # 남은 총 갯수
+
+# quiz # 키와 몸무게, 성별을 입력하면 그에 따른 표준 체중을 알려주는 프로그램.
+# height = 168
+# gender = "남자"
+
+# def std_wight(height, gender): # 키는 미터 단위 (실수), 성별 "남자" / "여자"
+#     if gender == "남자":
+#         return height * height * 22
+#     else:
+#         return height * height * 21
+    
+# height = 168 # cm
+# gender = "남자"
+# weight = round(std_wight(height / 100, gender), 2)
+# print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender, weight))
+
+
+## 표준 입출력
+
+# print("python", "java", "javascript", sep=" vs ") # sep="(이 사이에 있는 값이 곧 앞에 입력한 값들 사이를 구분해주는 입력값이 됨.)"
+
+# print("python", "java", sep=" vs ", end=" ") # end="(공백 안에 값을 넣으면 그 값을 마지막으로 입력하고 구문이 출력 됨. 다음 글을 연장해서 출력하는 것으로도 사용할 수 있음.)"
+# print("마참내!")
+
+# scores = {"한국":2, "일본":1, "홍콩":1}
+# for country, scores in scores.items():
+#     print(country.ljust(4), str(scores).rjust(4), sep=":") #ljust , rjust = 왼쪽 정렬, 오른쪽 정렬. 괄호 안 값은 확보할 공간을 의미함.
+
+# .zfill
+# for num in range(1, 21):
+#     print("대기번호 : " + str(num).zfill(3)) # 3의 공간을 확보하는데, 나머지 없는 숫자는 0으로 채워줘라.
+
+# answer = input("아무 값이나 입력하세요. ") # 사용자 입력을 통해서 값을 받게 되면, 항상 문자열로 받게 됨 (str)
+# print("입력하신 값은 " + answer + " 입니다.")
+# print(type(answer))
+
+
+## 다양한 출력 포멧
+# 빈 자리는 그냥 두고, 오른쪽 정렬을 하는데, 10칸을 확보하고 배치해라.
+print("{0: >10}".format(500))
+# 500은 오른쪽에 10칸 확보, 1은 왼쪽에 10칸 확보. 그 사이 콤마.
+print("{0: <10},{1: >10}".format(500, 1))
+# 값 앞에 양수 음수 표시하기 (+추가)
+print("{0: <+10}".format(-500))
+# 3자리마다 콤마 찍기.
+print("{0:,}".format(100000000000))
+# 3자리마다 콤마 찍고, + - 도 붙이기.
+print("{0:+,}".format(-100000000000))
+# 3자리마다 콤마 찍고, + - 도 붙이기. 자릿수도 확보하고, 돈이 많으면 기분이 좋으니까 빈칸은 ^로 채우기.
+print("{0:^<+30,}".format(10000000000))
+# 소수점 출력하기 인데, f 앞 .a를 붙이면, 소수점 a+1번째 자리에서 반올림 해라. 라는 뜻이 됨
+print("{0:.2f}".format(5/3))
