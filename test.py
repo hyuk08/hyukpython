@@ -451,16 +451,90 @@
 
 ## 다양한 출력 포멧
 # 빈 자리는 그냥 두고, 오른쪽 정렬을 하는데, 10칸을 확보하고 배치해라.
-print("{0: >10}".format(500))
-# 500은 오른쪽에 10칸 확보, 1은 왼쪽에 10칸 확보. 그 사이 콤마.
-print("{0: <10},{1: >10}".format(500, 1))
-# 값 앞에 양수 음수 표시하기 (+추가)
-print("{0: <+10}".format(-500))
-# 3자리마다 콤마 찍기.
-print("{0:,}".format(100000000000))
-# 3자리마다 콤마 찍고, + - 도 붙이기.
-print("{0:+,}".format(-100000000000))
-# 3자리마다 콤마 찍고, + - 도 붙이기. 자릿수도 확보하고, 돈이 많으면 기분이 좋으니까 빈칸은 ^로 채우기.
-print("{0:^<+30,}".format(10000000000))
-# 소수점 출력하기 인데, f 앞 .a를 붙이면, 소수점 a+1번째 자리에서 반올림 해라. 라는 뜻이 됨
-print("{0:.2f}".format(5/3))
+# print("{0: >10}".format(500))
+# # 500은 오른쪽에 10칸 확보, 1은 왼쪽에 10칸 확보. 그 사이 콤마.
+# print("{0: <10},{1: >10}".format(500, 1))
+# # 값 앞에 양수 음수 표시하기 (+추가)
+# print("{0: <+10}".format(-500))
+# # 3자리마다 콤마 찍기.
+# print("{0:,}".format(100000000000))
+# # 3자리마다 콤마 찍고, + - 도 붙이기.
+# print("{0:+,}".format(-100000000000))
+# # 3자리마다 콤마 찍고, + - 도 붙이기. 자릿수도 확보하고, 돈이 많으면 기분이 좋으니까 빈칸은 ^로 채우기.
+# print("{0:^<+30,}".format(10000000000))
+# # 소수점 출력하기 인데, f 앞 .a를 붙이면, 소수점 a+1번째 자리에서 반올림 해라. 라는 뜻이 됨
+# print("{0:.2f}".format(5/3))
+
+
+## 파일 입출력 # w = 쓰기 (덮어쓰기), a = 이어쓰기, r = 읽기
+# score_file = open("score.txt", "w", encoding="utf8") 
+# print("수학 : 100", file=score_file)
+# print("영어 : 100", file=score_file)
+# score_file.close()
+
+# score_file = open("score.txt", "a", encoding="utf8")
+# score_file.write("과학 : 100")
+# score_file.write("\n코딩 : 100") # .write 사용 시 자동으로 줄바꿈이 되지 않음. \n을 통한 줄바꿈.
+# score_file.close()
+ 
+# # 파일 읽기 # "r"
+# score_file = open("score.txt", "r", encoding="utf8")
+# print(score_file.read())
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf8")
+# print(score_file.readline(), end="") # 줄별로 읽기, 한 줄 읽고 커서를 다음 줄로 이동.
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="")
+# score_file.close()
+
+# # 몇 줄 인지 모를 때.
+# score_file = open("score.txt", "r", encoding="utf8")
+# while True:
+#     line = score_file.readline()
+#     if not line:
+#         break
+#     print(line)
+# score_file.close()
+
+# # 또다른 방법.
+# score_file = open("score.txt", "r", encoding="utf8")
+# lines = score_file.readlines() # list 형태로 저장
+# for line in lines:
+#     print(line, end="")
+# score_file.close()
+
+
+## pickle
+# import pickle
+# profile_file = open("profile.pickle", "wb")
+# profile = {"이름":"한승혁", "나이":23, "취미":["Blender", "UE5", "python"]}
+# print(profile)
+# pickle.dump(profile, profile_file)  # profile 에 있는 정보를 file 에 저장
+# profile_file.close()
+
+# profile_file = open("profile.pickle", "rb")
+# profile = pickle.load(profile_file) # file 에 있는 정보를 profile 에 불러오기.
+# print(profile)
+# profile_file.close()
+
+
+## with
+# with open("study.txt", "w", encoding="utf8") as study_file:
+#     study_file.write("파이썬 공부중...")
+
+# with open("study.txt", "r", encoding="utf8") as study_file:
+#     print(study_file.read())
+
+from tkinter import * 
+win = Tk() # 창 생성
+
+win.geometry("1000x500")
+win.title("test")
+win.option_add("*Font", "맑은고딕 25")
+btn = Button(win, text="버튼")
+btn.pack()
+
+
+win.mainloop() # 창 실행
