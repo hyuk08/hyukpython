@@ -1,5 +1,5 @@
 # 파이썬 할당연산자
-# = 왼쪽 변수에 오른쪽 값을 할당한다. ex) a = b 는 a = b 를 의미함. 
+# = 왼쪽 변수에 오른쪽 값을 할당한다. ex) a = b 는 a = b 를 의미함.
 # += 왼쪽 변수에 오른쪽 값을 더하고 그 결과를 왼쪽 변수에 할당한다. ex) a += b 는 a = a+b 를 의미함.
 # -= 왼쪽 변수에 오른쪽 값을 빼고 그 결과를 왼쪽 변수에 할당한다. ex) a -= b 는 a = a-b 를 의미함.
 # *= 왼쪽 변수에 오른쪽 값을 곱하고 그 결과를 왼쪽 변수에 할당한다. ex) a *= b 는 a = a*b 를 의미함.
@@ -7,7 +7,6 @@
 # %/ 왼쪽 변수에 오른쪽 값을 나눈 후 그 '나머지'를 왼쪽 변수에 할당한다. ex) a %/ b 는 a = a%b 를 의미함.
 # //= 왼쪽 변수에 오른쪽 값을 나눈 후 그 몫을 왼쪽 변수에 할당한다. ex) a //= b 는 a = a//b를 의미함.
 # **= 왼쪽 변수에 오른쪽 값을 제곱하고 그 결과를 왼쪽 변수에 할당한다. ex) a **= b 는 a = a**b 를 의미함.
-
 
 
 # animal = "강아지"
@@ -218,11 +217,10 @@
 # print(" -- 축하합니다 --")
 
 
-
 ## if     # if elif else.
 
 # weater = "비"
-# if weater == "비": 
+# if weater == "비":
 #     print("우산을 챙기세요.")
 # elif weater == "미세먼지":
 #     print("마스크를 챙기세요")
@@ -255,8 +253,6 @@
 # else:
 #     print("잘못된 입력입니다.")
 # elif 0 <= temp <= 10: 같이 end 없이도 사용 가능.
-    
-
 
 
 ## for # 반복문.
@@ -265,7 +261,7 @@
 #     print("{0}, 커피가 준비되었습니다.".format(customer))
 
 
-# while 
+# while
 # customer = "한승혁"
 # index = 5
 # while index >= 0: # index가 0보다 크거나 같을 때 까지 밑에 구문을 반복.
@@ -297,18 +293,16 @@
 #     person = input("이름이 어떻게 되세요? ")
 
 
-
 ## continue 와 break
 # absent = [2, 5] # 결석
 # no_book = [7] # 책을 깜빡함
 # for student in range(1, 11):
-#     if student in absent: # 만약 absent 값이 student 에 있다면, 
+#     if student in absent: # 만약 absent 값이 student 에 있다면,
 #         continue # 다음 print 구문으로 넘어가지 않고, 윗 구문을 반복함.
 #     elif student in no_book:
 #         print("오늘 수업 여기까지. {0}번, 교무실로 따라와.".format(student))
 #         break # break를 만나면 바로 반복문 탈출.
 #     print("{0}번 학생, 58p 읽어보세요.".format(student))
-
 
 
 ## 한 줄 for문
@@ -336,8 +330,7 @@
 # 총 탑승 승객 : 2명
 
 
-
-## 함수 
+## 함수
 
 # def open_account():
 #     print("새로운 계좌가 생성되었습니다.")
@@ -359,13 +352,11 @@
 #     return commission, balance - money - commission
 
 
-
 # balance = 0
 # balance = deposit(balance, 1000)
 # # balance = withdraw(balance, 500)
 # commission, balance = withdraw_night(balance, 500)
 # print("출금이 완료되었습니다. 수수료는 {0}원이며, 잔액은 {1}원 입니다.".format(commission, balance))
-
 
 
 # 함수 기본값
@@ -376,7 +367,7 @@
 # profile("강지호", 23, "Js")
 # profile("전지호", 23, "Java")
 
-# 중복되는 값을 반복하여 작성할 필요 없이 기본값으로 만들어 줄 수 있음. 
+# 중복되는 값을 반복하여 작성할 필요 없이 기본값으로 만들어 줄 수 있음.
 # def profile(name, age=23, main_lang="python"): # 변수 뒤 '=' 과 값을 붙혀줌으로써 기본값 생성.
 #     print("이름 : {0}\t 나이 : {1}\t 주 사용 언어 : {2}".format(name, age, main_lang))
 # profile("한승혁")
@@ -389,7 +380,7 @@
 #     print(name, age, main_lang)
 
 # profile(name="한승혁", main_lang="python", age=23)
-# profile(main_lang="Js", name="강지호", age=23)  
+# profile(main_lang="Js", name="강지호", age=23)
 
 # 가변인자 # 서로 다른 갯수의 값을 넣어줄 때 사용.
 # def profile(name, age, *language):
@@ -422,7 +413,7 @@
 #         return height * height * 22
 #     else:
 #         return height * height * 21
-    
+
 # height = 168 # cm
 # gender = "남자"
 # weight = round(std_wight(height / 100, gender), 2)
@@ -467,7 +458,7 @@
 
 
 ## 파일 입출력 # w = 쓰기 (덮어쓰기), a = 이어쓰기, r = 읽기
-# score_file = open("score.txt", "w", encoding="utf8") 
+# score_file = open("score.txt", "w", encoding="utf8")
 # print("수학 : 100", file=score_file)
 # print("영어 : 100", file=score_file)
 # score_file.close()
@@ -476,7 +467,7 @@
 # score_file.write("과학 : 100")
 # score_file.write("\n코딩 : 100") # .write 사용 시 자동으로 줄바꿈이 되지 않음. \n을 통한 줄바꿈.
 # score_file.close()
- 
+
 # # 파일 읽기 # "r"
 # score_file = open("score.txt", "r", encoding="utf8")
 # print(score_file.read())
@@ -489,7 +480,7 @@
 # print(score_file.readline(), end="")
 # score_file.close()
 
-# # 몇 줄 인지 모를 때.
+# 몇 줄 인지 모를 때.
 # score_file = open("score.txt", "r", encoding="utf8")
 # while True:
 #     line = score_file.readline()
@@ -528,11 +519,10 @@
 #     print(study_file.read())
 
 
-
 ##############
 
 # # 버튼 누르면 시간 표시되는 프로그램.
-# from tkinter import * 
+# from tkinter import *
 # from datetime import datetime
 # win = Tk() # 창 생성
 
@@ -559,3 +549,39 @@
 ###############
 
 # 로또번호 입력 받아서 당첨 번호 확인하기.
+
+# from tkinter import *
+
+# win = Tk()
+# win.geometry("300x100")
+# win.title("test")
+# win.option_add("*Font", "바탕체 20")
+
+# ent = Entry(win)
+# ent.pack()
+
+
+# def ent_p():
+#     a = ent.get()
+#     print(a)  # ent_p(): 를 입력시 a를 출력하는데, a = ent.get()
+
+
+# btn = Button(win)
+# btn.config(text="로또 당첨 번호 확인")
+# btn.config(command=ent_p)
+# btn.pack()
+
+# win.mainloop()
+
+
+# 함수 정리
+def 모자(구멍):
+    print(구멍 + 1)
+
+모자(1)
+모자(2)
+
+def 함수():
+    return 10 # 함수를 실행하고 나서 10을 남겨라? 함수 실행하고 나서 가죽을 남기고 싶을 때.
+
+함수()
