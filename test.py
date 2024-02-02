@@ -527,14 +527,35 @@
 # with open("study.txt", "r", encoding="utf8") as study_file:
 #     print(study_file.read())
 
-from tkinter import * 
-win = Tk() # 창 생성
-
-win.geometry("1000x500")
-win.title("test")
-win.option_add("*Font", "맑은고딕 25")
-btn = Button(win, text="버튼")
-btn.pack()
 
 
-win.mainloop() # 창 실행
+##############
+
+# # 버튼 누르면 시간 표시되는 프로그램.
+# from tkinter import * 
+# from datetime import datetime
+# win = Tk() # 창 생성
+
+# win.geometry("600x100")
+# win.title("What time ?")
+# win.option_add("*Font", "바탕체 20")
+
+# btn = Button(win) #btn 이라는 변수에 버튼을 만드는 함수 Button를 작성하고 괄호 안에 버튼을 넣을 창을 지정(win).
+# # btn = Button(win, text ="현재 시각", width = 20, height = 20) # 이렇게 Button 함수 안에 작성해도 되지만, 가독성을 위해 밖으로 뺌.
+# btn.config(text = "버튼을 누르면 현재 시간이 표시됩니다.") # 버튼에 텍스트 넣기.
+# btn.config(width = 40, height = 5) # 버튼 크기 지정. (px)
+
+# def what_time():
+#    dnow = datetime.now()
+#    btn.config(text = dnow)
+# btn.config(command = what_time)
+
+# btn.pack()
+# win.mainloop() # 창 실행
+
+###############
+
+
+###############
+
+# 로또번호 입력 받아서 당첨 번호 확인하기.
