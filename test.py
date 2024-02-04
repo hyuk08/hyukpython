@@ -584,5 +584,63 @@
 # def 함수():
 #     return 10 # 함수를 실행하고 나서 10을 남겨라? 함수 실행하고 나서 가죽을 남기고 싶을 때.
 
-# 함수() 
+# 함수()
 
+
+
+
+# ## 딥러닝 # tensor
+# import tensorflow as tf
+
+# # tensor = tf.constant( [3, 4, 5] )
+# tensor2 = tf.constant( [ [1,2],
+#                          [3,4] ] )     
+# tensor3 = tf.constant( [ [5,6],  
+#                          [7,8] ] ) # 행렬곱 # matmul    
+# # 출력되는 dtype -> 정수는 int, 실수는 float 로 출력 됨.
+
+# print(tf.matmul(tensor2, tensor3))
+
+# tensor4 = tf.zeros([2,2,3])  # tensor shape #무슨 뜻이냐면, 뒤에서부터 해석하면 됨. 0이 3개 담긴 2개 행렬을 생성하는데 그걸 또 2개로 만들어줘라. 라는 뜻.
+# print(tensor4)
+
+# print(tensor2.shape) # shape 출력 방법. 텐서2는 (2,2)
+
+# # tf.Variable() # 딥러닝의 weight 값이라고 생각해도 됨. 웨이트 같은 건 Variable로 만들어야 함.
+# w = tf.Variable(1.0)
+# print(w)
+
+
+import tensorflow as tf
+
+# 키를 통해 신발 사이즈를 예측
+# y = ax + b
+# 신발 = 키 * a + b
+
+키 = 170
+신발사이즈 = 260
+
+a = tf.Variable(0.1)
+b = tf.Variable(0.2)
+
+def 손실함수():
+    예측값 = 키 * a + b
+    return tf.square(신발사이즈 - 예측값)
+    # 실제값 - 예측값 뱉기(즉 오차). 마이너스로 치닿는 걸 막기 위해 제곱으로 계산함. 그게 -> tf.square
+
+opt = tf.keras.optimizers.Adam(learning_rate=0.1)
+
+resultA = 0
+resultB = 0
+
+
+for i in range(300):
+    opt.minimize(손실함수, var_list=[a, b])
+    print(a.numpy(), b.numpy())
+    
+    if i==299:
+        resultA = a.numpy()
+        resultB = b.numpy()
+    # (a, b) 로 작성해도 되는데, 보기 불편해서 .numpy() 로 값만 출력하게 바꿔줌.
+
+print('result : ', (키 * resultA + resultB) )
