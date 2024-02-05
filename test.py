@@ -617,7 +617,7 @@ import tensorflow as tf
 # y = ax + b
 # 신발 = 키 * a + b
 
-키 = 170
+키 = 300
 신발사이즈 = 260
 
 a = tf.Variable(0.1)
@@ -643,4 +643,4 @@ for i in range(300):
         resultB = b.numpy()
     # (a, b) 로 작성해도 되는데, 보기 불편해서 .numpy() 로 값만 출력하게 바꿔줌.
 
-print('result : ', (키 * resultA + resultB) )
+print('result : ', (키 * resultA + resultB))
