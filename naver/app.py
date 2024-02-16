@@ -2,9 +2,9 @@ import requests # 웹사이트 접속 도와주는 라이브러리
 from bs4 import BeautifulSoup # 파이썬으로 html 웹문서 분석 도와주는 라이브러리
 
 samsung = requests.get('https://finance.naver.com/item/sise.nhn?code=005930') # 웹사이트 데이터 수집하기
-data = requests.get('https://flyturtlestudio.tistory.com/2609')
-print(data.content) # url의 html 데이터 가져오기.
-print(data.status_code) # 웹페이지 접속이 제대로 되었는지 확인하는 코드. 200이 뜨면 정상.
+# data = requests.get('https://flyturtlestudio.tistory.com/2609')
+# print(data.content) # url의 html 데이터 가져오기.
+# print(data.status_code) # 웹페이지 접속이 제대로 되었는지 확인하는 코드. 200이 뜨면 정상.
 
 # 가져온 html = data.content 이기 때문에 
                     # vv 이 자리에 넣어줌.
@@ -13,12 +13,13 @@ soup = BeautifulSoup(samsung.content, 'html.parser')
 
 
 
+
 print('\n--- 삼성전자 ---')
 print('현재가 = ', soup.find_all('strong', id="_nowVal")[0].text) # 뒤에 .text를 붙히면, 원하는 값만 뱉어줌.
 print('거래량 = ', soup.find_all('span', id="_quant")[0].text)
-print('전일대비 = ', soup.select('.rate_info .today .no_exday em span .blind').text)
+# print('전일대비 = ', soup.select('.rate_info .today .no_exday em span .blind').text)
 
-
+exit()
 
 lg = requests.get('https://finance.naver.com/item/sise.naver?code=066570')
 soup = BeautifulSoup(lg.content, 'html.parser')
