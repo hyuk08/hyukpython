@@ -47,7 +47,6 @@
 
 
 list = ['삼성전자', '카카오', '네이버', '신풍제약']
-
 # for i in list: # range 대신 list 를 넣을 수 있음. 넣으면 리스트 안 값 만큼 반복되고, i 는 1, 2, 3, 4, 5 가 아니라 리스트 속 하나의 값이 됨.
 #     print(i)
 
@@ -55,6 +54,7 @@ file = open('list.txt', 'w')
 for i in range(4):
     file.write(list[i] + '\n')
 file.close
+
 # 이렇게 할 필요가 없다는 거
 # file = open('list.txt', 'w')
 # file.write(list[0] + '\n')
