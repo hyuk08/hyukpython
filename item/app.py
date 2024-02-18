@@ -11,9 +11,8 @@ samsung = requests.get('https://finance.naver.com/item/sise.nhn?code=005930') # 
 soup = BeautifulSoup(samsung.content, 'html.parser')
 ## print(soup.find_all('태그명', 속성)) 찾은 결과물을 리스트 형태 안에 다 담아서 뱉어줌.
 
-
-
-
+print(soup)
+exit()
 print('\n--- 삼성전자 ---')
 print('현재가 = ', soup.find_all('strong', id="_nowVal")[0].text) # 뒤에 .text를 붙히면, 원하는 값만 뱉어줌.
 print('거래량 = ', soup.find_all('span', id="_quant")[0].text)

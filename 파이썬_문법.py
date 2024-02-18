@@ -237,21 +237,21 @@
 # else:
 #     print("준비할 거 없는 가벼운 아침이네요. 조심히 다녀오세요.")
 
-# temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
-# if temp <= 0:
-#     print("물이 어는 수준입니다. 미끄럼 주의하세요.")
-# elif temp >= 0 and temp <= 10:
-#     print("많이 춥습니다. 외투를 챙기세요.")
-# elif temp >= 10 and temp <= 20:
-#     print("낮엔 덥지만 아침과 저녁이 쌀쌀해요. 겉옷을 챙기세요.")
-# elif temp >= 20 and temp <= 30:
-#     print("많이 덥습니다. 썬크림을 바르시고, 야외활동은 자제하세요.")
-# elif temp >= 30 and temp <= 40:
-#     print("밖이 끓는 수준입니다. 되도록이면 실내에 계십시오.")
-# elif temp >= 40 and temp <= 100:
-#     print("살이 익는 수준의 온도입니다. 절대 나가지 마세요. 무언가 잘못됐습니다. 경고!경고!경고!")
-# else:
-#     print("잘못된 입력입니다.")
+temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
+if temp <= 0:
+    print("물이 어는 수준입니다. 미끄럼 주의하세요.")
+elif temp >= 0 and temp <= 10:
+    print("많이 춥습니다. 외투를 챙기세요.")
+elif temp >= 10 and temp <= 20:
+    print("낮엔 덥지만 아침과 저녁이 쌀쌀해요. 겉옷을 챙기세요.")
+elif temp >= 20 and temp <= 30:
+    print("많이 덥습니다. 썬크림을 바르시고, 야외활동은 자제하세요.")
+elif temp >= 30 and temp <= 40:
+    print("밖이 끓는 수준입니다. 되도록이면 실내에 계십시오.")
+elif temp >= 40 and temp <= 100:
+    print("살이 익는 수준의 온도입니다. 절대 나가지 마세요. 무언가 잘못됐습니다. 경고!경고!경고!")
+else:
+    print("잘못된 입력입니다.")
 # elif 0 <= temp <= 10: 같이 end 없이도 사용 가능.
 
 
