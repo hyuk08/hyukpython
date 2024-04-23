@@ -23,7 +23,7 @@ function draw() {
         drawTarget(cx, cy, unit, random(2, mouseY/5));
       } else if (p > 0.1) {
         eye(cx, cy, unit, random(255), 3, keyIsPressed)
-      } else if (mouseIsPressed) {
+        } else if (mouseIsPressed) {
         fill(243, 138, 255)
         //아직 안 채웠음 ㅋㅋ
           } else {
