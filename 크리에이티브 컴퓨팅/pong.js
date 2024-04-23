@@ -49,6 +49,7 @@ function draw() {
   if (keyIsDown(DOWN_ARROW)) {
     barY += 6;
   }
+  
   if (keyIsDown(UP_ARROW)) {
     barY -= 6;
   }
