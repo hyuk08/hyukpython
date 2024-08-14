@@ -617,7 +617,7 @@ import tensorflow as tf
 # y = ax + b
 # 신발 = 키 * a + b
 
-키 = 300
+키 = 170
 신발사이즈 = 260
 
 a = tf.Variable(0.1)
