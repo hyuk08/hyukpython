@@ -237,23 +237,22 @@
 # else:
 #     print("준비할 거 없는 가벼운 아침이네요. 조심히 다녀오세요.")
 
-temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
-if temp <= 0:
-    print("물이 어는 수준입니다. 미끄럼 주의하세요.")
-elif temp >= 0 and temp <= 10:
-    print("많이 춥습니다. 외투를 챙기세요.")
-elif temp >= 10 and temp <= 20:
-    print("낮엔 덥지만 아침과 저녁이 쌀쌀해요. 겉옷을 챙기세요.")
-elif temp >= 20 and temp <= 30:
-    print("많이 덥습니다. 썬크림을 바르시고, 야외활동은 자제하세요.")
-elif temp >= 30 and temp <= 40:
-    print("밖이 끓는 수준입니다. 되도록이면 실내에 계십시오.")
-elif temp >= 40 and temp <= 100:
-    print("살이 익는 수준의 온도입니다. 절대 나가지 마세요. 무언가 잘못됐습니다. 경고!경고!경고!")
-else:
-    print("잘못된 입력입니다.")
+# temp = int(input("오늘 기온은 몇 도 인가요? 숫자만 입력. "))
+# if temp <= 0:
+#     print("물이 어는 수준입니다. 미끄럼 주의하세요.")
+# elif temp >= 0 and temp <= 10:
+#     print("많이 춥습니다. 외투를 챙기세요.")
+# elif temp >= 10 and temp <= 20:
+#     print("낮엔 덥지만 아침과 저녁이 쌀쌀해요. 겉옷을 챙기세요.")
+# elif temp >= 20 and temp <= 30:
+#     print("많이 덥습니다. 썬크림을 바르시고, 야외활동은 자제하세요.")
+# elif temp >= 30 and temp <= 40:
+#     print("밖이 끓는 수준입니다. 되도록이면 실내에 계십시오.")
+# elif temp >= 40 and temp <= 100:
+#     print("살이 익는 수준의 온도입니다. 절대 나가지 마세요. 무언가 잘못됐습니다. 경고!경고!경고!")
+# else:
+#     print("잘못된 입력입니다.")
 # elif 0 <= temp <= 10: 같이 end 없이도 사용 가능.
-
 
 ## for # 반복문.
 # starbucks = ["한승혁", "강지호", "전지호", "최용빈"]
@@ -332,33 +331,33 @@ else:
 
 ## 함수
 
-def open_account():
-    print("새로운 계좌가 생성되었습니다.")
+# def open_account():
+#     print("새로운 계좌가 생성되었습니다.")
 
-def deposit(balance, money): # 입금
-    print("입금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance + money))
-    return balance + money
+# def deposit(balance, money): # 입금
+#     print("입금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance + money))
+#     return balance + money
 
-def withdraw(balance, money): # 출금
-    if balance >= money: # 출금액이 잔액보다 적으면, 출금 가능.
-        print("출금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance - money))
-        return balance - money
-    else:
-        print("출금에 실패하였습니다. 잔액은 {0}원 입니다.".format(balance))
-        return balance
+# def withdraw(balance, money): # 출금
+#     if balance >= money: # 출금액이 잔액보다 적으면, 출금 가능.
+#         print("출금이 완료되었습니다. 잔액은 {0}원 입니다.".format(balance - money))
+#         return balance - money
+#     else:
+#         print("출금에 실패하였습니다. 잔액은 {0}원 입니다.".format(balance))
+#         return balance
 
-def withdraw_night(balance, money): # 저녁에 출금
-    commission = 100 # 수수료
-    return commission, balance - money - commission
+# def withdraw_night(balance, money): # 저녁에 출금
+#     commission = 100 # 수수료
+#     return commission, balance - money - commission
 
 
-balance = 0
-balance = deposit(balance, 1000)
-# balance = withdraw(balance, 500)
-commission, balance = withdraw_night(balance, 500)
-print("출금이 완료되었습니다. 수수료는 {0}원이며, 잔액은 {1}원 입니다.".format(commission, balance))
+# balance = 0
+# balance = deposit(balance, 1000)
+# # balance = withdraw(balance, 500)
+# commission, balance = withdraw_night(balance, 500)
+# print("출금이 완료되었습니다. 수수료는 {0}원이며, 잔액은 {1}원 입니다.".format(commission, balance))
 
-exit()
+# exit()
 
 # 함수 기본값
 # def profile(name, age, main_lang):
@@ -612,36 +611,46 @@ exit()
 # print(w)
 
 
-import tensorflow as tf
+# import tensorflow as tf
 
 # 키를 통해 신발 사이즈를 예측
 # y = ax + b
 # 신발 = 키 * a + b
 
+<<<<<<< HEAD
 키 = 170
 신발사이즈 = 260
+=======
+# 키 = 300
+# 신발사이즈 = 260
+>>>>>>> 47fcfc13d42d8e343f956d2ec92c4b1745e553ad
 
-a = tf.Variable(0.1)
-b = tf.Variable(0.2)
+# a = tf.Variable(0.1)
+# b = tf.Variable(0.2)
 
-def 손실함수():
-    예측값 = 키 * a + b
-    return tf.square(신발사이즈 - 예측값)
-    # 실제값 - 예측값 뱉기(즉 오차). 마이너스로 치닿는 걸 막기 위해 제곱으로 계산함. 그게 -> tf.square
+# def 손실함수():
+#     예측값 = 키 * a + b
+#     return tf.square(신발사이즈 - 예측값)
+#     # 실제값 - 예측값 뱉기(즉 오차). 마이너스로 치닿는 걸 막기 위해 제곱으로 계산함. 그게 -> tf.square
 
-opt = tf.keras.optimizers.Adam(learning_rate=0.1)
+# opt = tf.keras.optimizers.Adam(learning_rate=0.1)
 
-resultA = 0
-resultB = 0
+# resultA = 0
+# resultB = 0
 
 
-for i in range(300):
-    opt.minimize(손실함수, var_list=[a, b])
-    print(a.numpy(), b.numpy())
+# for i in range(300):
+#     opt.minimize(손실함수, var_list=[a, b])
+#     print(a.numpy(), b.numpy())
     
-    if i==299:
-        resultA = a.numpy()
-        resultB = b.numpy()
-    # (a, b) 로 작성해도 되는데, 보기 불편해서 .numpy() 로 값만 출력하게 바꿔줌.
+#     if i==299:
+#         resultA = a.numpy()
+#         resultB = b.numpy()
+#     # (a, b) 로 작성해도 되는데, 보기 불편해서 .numpy() 로 값만 출력하게 바꿔줌.
 
-print('result : ', (키 * resultA + resultB))
+# print('result : ', (키 * resultA + resultB))
+
+
+# 240914 부터
+
+print("Hello 24년 9월 14일!")
