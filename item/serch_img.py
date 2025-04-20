@@ -15,16 +15,16 @@ def 검색어(serch):
 
 
 
-남은 = 10
-for i in range(10):  
-    남은 -= 1
-    print(f'남은 바퀴 수 {남은}')
-    time.sleep(0.5)
+# 남은 = 10
+# for i in range(10):  
+#     남은 -= 1
+#     print(f'남은 바퀴 수 {남은}')
+#     time.sleep(0.5)
 
-if  남은 > -1 :
-    A = input('검색어를 입력하세요. ')
+# if  남은 > -1 :
+A = input('검색어를 입력하세요. ')
 
-    검색어(A)
+검색어(A)
 
 
 # file = open('a.html', 'w')
