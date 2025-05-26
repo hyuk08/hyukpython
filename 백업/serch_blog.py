@@ -17,5 +17,4 @@ def 검색어(serch):
     for i in range(0, 30):
         print(titlename_list[i].text)
         print(title_list[i]['href'], '\n')
-
 검색어(A)

@@ -5,10 +5,18 @@
 # for i in my_var:
 #     print(i)
 
-drama = ['시즌1', '시즌2', '시즌3', '시즌4', '시즌5']
-for i in drama:
-    if i == '시즌4': #어떠한 조건이 참일 때, 반복문을 탈출할 수 있음.
-        print('노잼!!!!!!!!!')
-        break
-    print(f'{i} 시청')
+# drama = ['시즌1', '시즌2', '시즌3', '시즌4', '시즌5']
+# for i in drama:
+#     if i == '시즌4': #어떠한 조건이 참일 때, 반복문을 탈출할 수 있음.
+#         print('노잼!!!!!!!!!')
+#         break
+#     print(f'{i} 시청')
+
+# 사과 = 'apple'
+# print(사과[:5])
+
+
+a = input(20)
+
+print(a+a)
 
