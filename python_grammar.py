@@ -652,7 +652,7 @@
 
 print("Hello 24년 9월 14일!")
 
-print('Hello world!')
+print('Hello  world!')
 
 
 print('안녕하세요 한승혁 입니다 반갑습니다!.')
