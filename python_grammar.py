@@ -42,7 +42,7 @@
 # from random import *
 # print(random()) # 0.0 ~ 1.0 사이의 임의의 값 생성.
 # print(int(random() * 10)) # 0.0 ~ 10.0 사이의 임의의 값hyuk@hyuk:~$ git clone git@github.com:hyuk08/hyukpython.git
- 생성. int를 붙히면 소수점 없이 정수만 값만 생성.
+#  생성. int를 붙히면 소수점 없이 정수만 값만 생성.
 # print(randrange(1, 10)) # 1 ~ 10 미만의 임의의 값 생성.
 # print(randrange(1, 45)) # 1 ~ 45 미만의 임의의 값 생성.
 # print(randint(1, 45)) # 1과 45를 포함하는 랜덤 값 생성.
@@ -654,14 +654,8 @@ print("Hello 24년 9월 14일!")
 
 print('Hello  world!')
 
-
 print('안녕하세요 한승혁 입니다 반갑습니다!.')
 
-
-
-
-
-
-
-
 print('Hello Linux!')
+
+print('1002_update')
