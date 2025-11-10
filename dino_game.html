@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공룡 점프 게임 🦕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-container {
+            background: #fff;
+            border-radius: 0;
+            padding: 20px;
+            box-shadow: 0 0 0 2px #000;
+            text-align: center;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: clamp(1.5em, 4vw, 2.5em);
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            font-size: clamp(0.9em, 2vw, 1.2em);
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        .score-item {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 8px 15px;
+            border-radius: 0;
+        }
+
+        .canvas-wrapper {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameCanvas {
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 0;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 2 / 1;
+        }
+
+        .controls {
+            margin-top: 15px;
+            color: #000;
+            font-size: clamp(0.8em, 2vw, 0.9em);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 15px;
+                width: 98%;
+                max-height: 98vh;
+            }
+
+            .score-board {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .score-item {
+                padding: 6px 12px;
+            }
+
+            h1 {
+                margin-bottom: 10px;
+            }
+
+            .controls {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .game-container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+            }
+
+            .score-board {
+                margin-bottom: 8px;
+                font-size: 0.9em;
+            }
+
+            .controls {
+                margin-top: 8px;
+                font-size: 0.75em;
+            }
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border: 3px solid #000;
+            color: #000;
+            padding: 40px;
+            border-radius: 0;
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+
+        .game-over h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .game-over button {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 0;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+
+        .game-over button:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .start-screen {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .start-screen h2 {
+            color: #000;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .start-screen button {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            border-radius: 0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+
+        .start-screen button:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🦕 공룡 점프 게임</h1>
+        
+        <div class="score-board">
+            <div class="score-item">
+                <strong>점수:</strong> <span id="score">0</span>
+            </div>
+            <div class="score-item">
+                <strong>최고점수:</strong> <span id="highScore">0</span>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <p>🎮 스페이스바 또는 ↑ 키를 눌러 점프하세요!</p>
+            <p>🚫 장애물을 피하세요!</p>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <h2>게임 시작</h2>
+            <button onclick="startGame()">시작하기</button>
+        </div>
+
+        <div class="game-over" id="gameOver">
+            <h2>게임 오버!</h2>
+            <p>최종 점수: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">다시 시작</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const highScoreElement = document.getElementById('highScore');
+        const gameOverScreen = document.getElementById('gameOver');
+        const startScreen = document.getElementById('startScreen');
+        const finalScoreElement = document.getElementById('finalScore');
+
+        // 캔버스 크기 설정 (반응형)
+        const BASE_WIDTH = 800;
+        const BASE_HEIGHT = 400;
+        let scale = 1;
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            const maxWidth = container.clientWidth - 20; // 패딩 고려
+            const maxHeight = window.innerHeight * 0.6; // 화면 높이의 60%
+            
+            let width = Math.min(maxWidth, BASE_WIDTH);
+            let height = width * (BASE_HEIGHT / BASE_WIDTH);
+            
+            if (height > maxHeight) {
+                height = maxHeight;
+                width = height * (BASE_WIDTH / BASE_HEIGHT);
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            scale = width / BASE_WIDTH;
+        }
+
+        // 초기 크기 설정 및 리사이즈 이벤트
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // 게임 상태
+        let gameRunning = false;
+        let gameSpeed = 5;
+        let score = 0;
+        let highScore = localStorage.getItem('dinoHighScore') || 0;
+        highScoreElement.textContent = highScore;
+
+        // 공룡 객체
+        const dino = {
+            x: 100,
+            y: 300,
+            width: 60,
+            height: 60,
+            velocityY: 0,
+            jumpPower: -15,
+            gravity: 0.8,
+            onGround: true,
+            color: '#4ecdc4'
+        };
+
+        // 장애물 배열
+        let obstacles = [];
+        let obstacleTimer = 0;
+
+        // 초기화
+        function init() {
+            const groundY = BASE_HEIGHT - 50; // 기본 지면 위치 (스케일 적용 전)
+            dino.x = 100;
+            dino.y = groundY - dino.height;
+            dino.velocityY = 0;
+            obstacles = [];
+            obstacleTimer = 0;
+            score = 0;
+            gameSpeed = 5;
+            scoreElement.textContent = score;
+        }
+
+        // 공룡 그리기 (검은색/흰색, 각진 스타일, 오른쪽을 향함)
+        function drawDino() {
+            const x = dino.x * scale;
+            const y = dino.y * scale;
+            const width = dino.width * scale;
+            const height = dino.height * scale;
+            
+            ctx.save();
+            ctx.translate(x, y);
+            
+            // 검은색
+            ctx.fillStyle = '#000';
+            
+            // 몸통 (각진 사각형)
+            ctx.fillRect(width * 0.15, height * 0.3, width * 0.5, height * 0.4);
+            
+            // 머리 (각진 사각형, 오른쪽에)
+            ctx.fillRect(width * 0.5, height * 0.15, width * 0.35, height * 0.35);
+            
+            // 목 (머리와 몸통 연결)
+            ctx.fillRect(width * 0.5, height * 0.4, width * 0.15, height * 0.15);
+            
+            // 꼬리 (왼쪽에, 각진 삼각형)
+            ctx.beginPath();
+            ctx.moveTo(width * 0.15, height * 0.5);
+            ctx.lineTo(0, height * 0.55);
+            ctx.lineTo(width * 0.05, height * 0.6);
+            ctx.closePath();
+            ctx.fill();
+            
+            // 다리 (뛰는 모션)
+            const legOffset = dino.onGround ? 0 : 4 * scale;
+            // 앞다리 (오른쪽)
+            ctx.fillRect(width * 0.55, height * 0.65 - legOffset, width * 0.12, height * 0.25);
+            // 뒷다리 (왼쪽)
+            ctx.fillRect(width * 0.25, height * 0.7 - legOffset, width * 0.15, height * 0.2);
+            
+            // 발톱 (검은색)
+            ctx.fillRect(width * 0.55, height * 0.85 - legOffset, width * 0.1, 3 * scale);
+            ctx.fillRect(width * 0.25, height * 0.85 - legOffset, width * 0.12, 3 * scale);
+            
+            // 눈 (흰색 배경에 검은 동공, 각진 사각형)
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(width * 0.6, height * 0.2, 8 * scale, 8 * scale);
+            ctx.fillRect(width * 0.7, height * 0.2, 8 * scale, 8 * scale);
+            
+            ctx.fillStyle = '#000';
+            ctx.fillRect(width * 0.62, height * 0.22, 4 * scale, 4 * scale);
+            ctx.fillRect(width * 0.72, height * 0.22, 4 * scale, 4 * scale);
+            
+            // 입 (검은 선, 각진)
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2 * scale;
+            ctx.beginPath();
+            ctx.moveTo(width * 0.65, height * 0.35);
+            ctx.lineTo(width * 0.69, height * 0.38);
+            ctx.lineTo(width * 0.73, height * 0.35);
+            ctx.stroke();
+            
+            // 등 가시 (각진 삼각형들, 검은색)
+            ctx.fillStyle = '#000';
+            for (let i = 0; i < 4; i++) {
+                const spikeX = width * (0.25 + i * 0.1);
+                ctx.beginPath();
+                ctx.moveTo(spikeX, height * 0.25);
+                ctx.lineTo(spikeX - width * 0.02, height * 0.15);
+                ctx.lineTo(spikeX + width * 0.02, height * 0.15);
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            ctx.restore();
+        }
+        
+        // roundRect 폴리필 (구형 브라우저 지원)
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+
+        // 장애물 그리기 (검은색, 각진)
+        function drawObstacles() {
+            obstacles.forEach(obstacle => {
+                const x = obstacle.x * scale;
+                const y = obstacle.y * scale;
+                const width = obstacle.width * scale;
+                const height = obstacle.height * scale;
+                
+                // 검은색
+                ctx.fillStyle = '#000';
+                ctx.fillRect(x, y, width, height);
+            });
+        }
+
+        // 지면 그리기 (검은색)
+        function drawGround() {
+            const groundY = canvas.height - 50 * scale;
+            const groundHeight = 50 * scale;
+            
+            // 검은색
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, groundY, canvas.width, groundHeight);
+        }
+
+        // 충돌 감지
+        function checkCollision() {
+            obstacles.forEach(obstacle => {
+                if (dino.x < obstacle.x + obstacle.width &&
+                    dino.x + dino.width > obstacle.x &&
+                    dino.y < obstacle.y + obstacle.height &&
+                    dino.y + dino.height > obstacle.y) {
+                    gameOver();
+                }
+            });
+        }
+
+        // 게임 오버
+        function gameOver() {
+            gameRunning = false;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('dinoHighScore', highScore);
+                highScoreElement.textContent = highScore;
+            }
+            finalScoreElement.textContent = score;
+            gameOverScreen.style.display = 'block';
+        }
+
+        // 게임 업데이트
+        function update() {
+            if (!gameRunning) return;
+
+            // 공룡 물리
+            dino.velocityY += dino.gravity;
+            dino.y += dino.velocityY;
+
+            // 지면 충돌 (비율 기반)
+            const groundY = BASE_HEIGHT - 50; // 기본 지면 위치 (스케일 적용 전)
+            if (dino.y + dino.height >= groundY) {
+                dino.y = groundY - dino.height;
+                dino.velocityY = 0;
+                dino.onGround = true;
+            } else {
+                dino.onGround = false;
+            }
+
+            // 장애물 생성
+            obstacleTimer++;
+            const scaledSpeed = gameSpeed * scale;
+            if (obstacleTimer > 120 - scaledSpeed * 2) {
+                const obstacleY = BASE_HEIGHT - 50 - 40; // 기본 위치 (스케일 적용 전)
+                obstacles.push({
+                    x: BASE_WIDTH,
+                    y: obstacleY,
+                    width: 30,
+                    height: 40
+                });
+                obstacleTimer = 0;
+            }
+
+            // 장애물 이동
+            obstacles.forEach((obstacle, index) => {
+                obstacle.x -= gameSpeed;
+                if (obstacle.x + obstacle.width < 0) {
+                    obstacles.splice(index, 1);
+                    score += 10;
+                    scoreElement.textContent = score;
+                    
+                    // 점수에 따라 속도 증가
+                    if (score % 100 === 0 && gameSpeed < 12) {
+                        gameSpeed += 0.5;
+                    }
+                }
+            });
+
+            // 충돌 체크
+            checkCollision();
+        }
+
+        // 게임 렌더링
+        function render() {
+            // 배경 지우기 (흰색)
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 게임 요소 그리기
+            drawGround();
+            drawDino();
+            drawObstacles();
+        }
+
+        // 게임 루프
+        function gameLoop() {
+            update();
+            render();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // 점프
+        function jump() {
+            if (dino.onGround && gameRunning) {
+                dino.velocityY = dino.jumpPower;
+                dino.onGround = false;
+            }
+        }
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (!gameRunning && startScreen.style.display !== 'none') {
+                    startGame();
+                } else {
+                    jump();
+                }
+            }
+        });
+
+        // 게임 시작
+        function startGame() {
+            resizeCanvas(); // 화면 크기 재조정
+            init();
+            gameRunning = true;
+            startScreen.style.display = 'none';
+            gameOverScreen.style.display = 'none';
+        }
+
+        // 게임 재시작
+        function restartGame() {
+            gameOverScreen.style.display = 'none';
+            startScreen.style.display = 'block';
+            gameRunning = false;
+            // 사용자가 시작하기 버튼을 눌러야 게임이 시작됨
+        }
+
+        // 게임 루프 시작
+        gameLoop();
+    </script>
+</body>
+</html>
+
