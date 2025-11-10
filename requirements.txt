@@ -1,0 +1,16 @@
+# Python 가상환경 의존성 파일
+# 설치 방법: pip install -r requirements.txt
+
+# 웹 크롤링 관련
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# 데이터 분석 관련
+pandas>=2.0.0
+
+# 머신러닝 관련 (필요시 주석 해제)
+# tensorflow>=2.13.0
+# keras>=2.13.0
+
+

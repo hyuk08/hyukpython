@@ -1,2 +1,41 @@
-
 .DS_Store
+
+# Python 가상환경
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python 캐시
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 환경 변수
+.env
+.env.local
+
+# 생성된 파일들
+*.txt
+!requirements.txt
+종목들.txt
+
+# Windows 관련
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
